@@ -244,7 +244,6 @@ const AgregarMascotaForm: React.FC<Props> = ({ userToEdit, onSuccess, usersList,
                         left: 0,
                         right: 0,
                         height: '8px',
-                        background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
                         borderTopLeftRadius: '12px',
                         borderTopRightRadius: '12px',
                     }

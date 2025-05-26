@@ -249,7 +249,6 @@ const AgregarClienteForm: React.FC<Props> = ({ userToEdit, onSuccess, usersList,
                         left: 0,
                         right: 0,
                         height: '8px',
-                        background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
                         borderTopLeftRadius: '12px',
                         borderTopRightRadius: '12px',
                     }
@@ -530,7 +529,6 @@ const AgregarClienteForm: React.FC<Props> = ({ userToEdit, onSuccess, usersList,
                                     disabled={isSubmitting}
                                     startIcon={userToEdit ? <SystemUpdateAltIcon /> : <PersonAddAltIcon />}
                                     sx={{
-                                        background: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.primary.dark})`,
                                         boxShadow: `0 4px 14px ${alpha(theme.palette.primary.main, 0.4)}`,
                                     }}
                                 >

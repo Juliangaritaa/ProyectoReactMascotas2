@@ -179,6 +179,7 @@ const DinamicTable: React.FC<DinamicTableProps> = ({
             display="flex"
             justifyContent="center"
             width="100%"
+            px={2}
         >
             <Fade in={true} timeout={500}>
                 <Card
@@ -186,7 +187,6 @@ const DinamicTable: React.FC<DinamicTableProps> = ({
                     sx={{
                         borderRadius: 3,
                         overflow: 'hidden',
-                        background: `linear-gradient(145deg, ${alpha(theme.palette.background.paper, 0.8)}, ${theme.palette.background.paper})`,
                         backdropFilter: 'blur(10px)',
                         boxShadow: `0 10px 40px -10px ${alpha(theme.palette.primary.main, 0.2)}`,
                         position: 'relative',
@@ -203,13 +203,12 @@ const DinamicTable: React.FC<DinamicTableProps> = ({
                             left: 0,
                             right: 0,
                             height: '8px',
-                            background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
                             borderTopLeftRadius: '12px',
                             borderTopRightRadius: '12px',
                         }
                     }}
                 >
-                    <CardContent sx={{ p: 0, height: '100%', display: 'flex', flexDirection: 'column', '&:last-child': { pb: 0 } }}>
+      <CardContent sx={{ p: 2, height: '100%', display: 'flex', flexDirection: 'column', '&:last-child': { pb: 2 } }}>
                         <DataGrid
                             rows={rows}
                             columns={columnasBotones}

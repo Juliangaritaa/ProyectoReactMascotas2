@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Grid } from "@mui/material";
+import { Grid, Box } from "@mui/material";
 import AgregarMascotaForm from "../components/AgregarMascotaForm";
 import DinamicTableMascotas from "../components/DinamicTableMascotas";
 import type { GridColDef } from '@mui/x-data-grid';
@@ -65,29 +65,33 @@ const ModuloMascotas = () => {
 
     return (
         <>
-
-            <Grid container spacing={2} marginTop={5}>
-                <Grid item columnSpan={12}>
-                    <DinamicTableMascotas
-                        rows={dataUsers}
-                        columns={columns}
-                        onDelete={handleDelete}
-                    />
+            <Grid container justifyContent={"center"} marginTop={5}>
+                <Grid item xs={12} md={6}>
+                    <Box>
+                        <AgregarMascotaForm
+                            userToEdit={userToEdit}
+                            onSuccess={() => {
+                                fetchUsers();
+                                setUserToEdit(null);
+                            }}
+                            usersList={dataUsers}
+                            clientesList={clientes}
+                            setUserToEdit={setUserToEdit}
+                        />
+                    </Box>
                 </Grid>
             </Grid>
 
             <Grid container justifyContent={"center"} marginTop={5}>
-                <Grid item xs={12} md={6}>
-                    <AgregarMascotaForm
-                        userToEdit={userToEdit}
-                        onSuccess={() => {
-                            fetchUsers();
-                            setUserToEdit(null);
-                        }}
-                        usersList={dataUsers}
-                        clientesList={clientes}
-                        setUserToEdit={setUserToEdit}
-                    />
+                <Grid item columnSpan={12}>
+                    <Box>
+                        <DinamicTableMascotas
+                            rows={dataUsers}
+                            columns={columns}
+                            onDelete={handleDelete}
+                        />
+                    </Box>
+
                 </Grid>
             </Grid>
         </>
