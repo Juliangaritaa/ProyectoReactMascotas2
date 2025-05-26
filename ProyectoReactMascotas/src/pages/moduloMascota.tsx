@@ -1,6 +1,8 @@
 import * as React from "react";
 import { Grid } from "@mui/material";
 import AgregarMascotaForm from "../components/AgregarMascotaForm";
+import DinamicTableMascotas from "../components/DinamicTableMascotas";
+import type { GridColDef } from '@mui/x-data-grid';
 
 interface Mascota {
     id: number;
@@ -37,26 +39,58 @@ const ModuloMascotas = () => {
             .catch((err) => console.error("Error al obtener clientes", err));
     };
 
+    const columns: GridColDef[] = [
+        { field: "nombre", headerName: "Nombre", width: 150 },
+        { field: "peso", headerName: "Peso", width: 150 },
+        { field: "raza", headerName: "Raza", width: 130 },
+        {
+            field: "idCliente",
+            headerName: "Dueño",
+            width: 200,
+            valueGetter: (params) => {
+                const cliente = clientes.find(c => c.id === params.value);
+                return cliente ? cliente.nombre : "Desconocido";
+            }
+        }
+    ];
+
+    const handleDelete = (id: number) => {
+        console.log(id)
+    }
+
     React.useEffect(() => {
         fetchUsers();
         fetchClientes();
     }, []);
 
     return (
-        <Grid container justifyContent={"center"} marginTop={5}>
-            <Grid item xs={12} md={6}>
-                <AgregarMascotaForm
-                    userToEdit={userToEdit}
-                    onSuccess={() => {
-                        fetchUsers();
-                        setUserToEdit(null);
-                    }}
-                    usersList={dataUsers}
-                    clientesList={clientes}
-                    setUserToEdit={setUserToEdit}
-                />
+        <>
+
+            <Grid container spacing={2} marginTop={5}>
+                <Grid item columnSpan={12}>
+                    <DinamicTableMascotas
+                        rows={dataUsers}
+                        columns={columns}
+                        onDelete={handleDelete}
+                    />
+                </Grid>
             </Grid>
-        </Grid>
+
+            <Grid container justifyContent={"center"} marginTop={5}>
+                <Grid item xs={12} md={6}>
+                    <AgregarMascotaForm
+                        userToEdit={userToEdit}
+                        onSuccess={() => {
+                            fetchUsers();
+                            setUserToEdit(null);
+                        }}
+                        usersList={dataUsers}
+                        clientesList={clientes}
+                        setUserToEdit={setUserToEdit}
+                    />
+                </Grid>
+            </Grid>
+        </>
     );
 };
 

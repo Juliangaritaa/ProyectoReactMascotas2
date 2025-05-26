@@ -268,7 +268,7 @@ const AgregarClienteForm: React.FC<Props> = ({ userToEdit, onSuccess, usersList,
                                     letterSpacing: '0.5px'
                                 }}
                             >
-                                {userToEdit ? 'Actualizar Usuario' : 'Registro de Usuario'}
+                                {userToEdit ? 'Actualizar Cliente' : 'Registro de Cliente'}
                             </Typography>
                         </Box>
 

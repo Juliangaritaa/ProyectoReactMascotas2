@@ -263,7 +263,7 @@ const AgregarMascotaForm: React.FC<Props> = ({ userToEdit, onSuccess, usersList,
                                     letterSpacing: '0.5px'
                                 }}
                             >
-                                {userToEdit ? 'Actualizar Usuario' : 'Registro de Usuario'}
+                                {userToEdit ? 'Actualizar Mascota' : 'Registro de Mascota'}
                             </Typography>
                         </Box>
 
